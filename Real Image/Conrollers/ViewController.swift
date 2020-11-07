@@ -14,6 +14,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var camera: NSView!
     
     let captureSession = AVCaptureSession()
+    var previewLayer: AVCaptureVideoPreviewLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +31,14 @@ class ViewController: NSViewController {
         }
         captureSession.addInput(input)
         
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = camera.bounds
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        
+//        if ((previewLayer.connection?.isVideoMirroringSupported) != nil) {
+//            previewLayer.connection?.automaticallyAdjustsVideoMirroring = false
+//            previewLayer.connection?.isVideoMirrored = true
+//        }
         
         camera.layer?.addSublayer(previewLayer)
     }
@@ -52,5 +58,14 @@ class ViewController: NSViewController {
         alert.informativeText = text
         alert.alertStyle = .critical
         alert.addButton(withTitle: "OK")
+    }
+    
+    @IBAction func flipClicked(_ sender: NSButton) {
+        if let connection = previewLayer.connection {
+            connection.automaticallyAdjustsVideoMirroring = false
+            if connection.isVideoMirroringSupported {
+                connection.isVideoMirrored = !connection.isVideoMirrored
+            }
+        }
     }
 }

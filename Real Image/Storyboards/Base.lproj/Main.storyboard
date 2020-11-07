@@ -142,7 +142,7 @@
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -163,16 +163,32 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Real_Image" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="530" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="A0d-5G-GzD">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <rect key="frame" x="0.0" y="54" width="530" height="216"/>
                             </customView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v5P-hz-d5E">
+                                <rect key="frame" x="209" y="3" width="112" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="VaP-yi-1sg"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Flip" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sqa-kX-dDj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="flipClicked:" target="XfG-lQ-9wD" id="KQ8-bj-kah"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="A0d-5G-GzD" secondAttribute="bottom" id="7Ua-bb-GIH"/>
+                            <constraint firstItem="A0d-5G-GzD" firstAttribute="height" secondItem="m2S-Jp-Qdl" secondAttribute="height" multiplier="0.8" id="2bb-b5-Yg0"/>
                             <constraint firstItem="A0d-5G-GzD" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="9w8-pu-SZH"/>
+                            <constraint firstAttribute="bottom" secondItem="v5P-hz-d5E" secondAttribute="bottom" constant="10" id="QPn-NE-x0M"/>
+                            <constraint firstItem="v5P-hz-d5E" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="Yqp-ij-AS3"/>
+                            <constraint firstAttribute="trailing" secondItem="v5P-hz-d5E" secondAttribute="trailing" constant="215" id="eHI-O1-7BN"/>
                             <constraint firstAttribute="trailing" secondItem="A0d-5G-GzD" secondAttribute="trailing" id="ei3-Rw-E0r"/>
                             <constraint firstItem="A0d-5G-GzD" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="qd2-Tm-wGc"/>
                         </constraints>
