@@ -14,16 +14,20 @@ class ViewController: NSViewController {
     @IBOutlet weak var camera: NSView!
     
     let captureSession = AVCaptureSession()
-    var captureDevice : AVCaptureDevice?
-    var previewLayer : AVCaptureVideoPreviewLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         camera.wantsLayer = true
         camera.layer?.backgroundColor = .black
         captureSession.sessionPreset = AVCaptureSession.Preset.low
-        let input = try! AVCaptureDeviceInput(device: AVCaptureDevice.default(for: .video)!)
+        let input: AVCaptureDeviceInput
+        do {
+            input = try AVCaptureDeviceInput(device: AVCaptureDevice.default(for: .video)!)
+        } catch {
+            dialogOKCancel(question: "Cannot open camera!", text: "The app will not terminate")
+            exit(1)
+        }
         captureSession.addInput(input)
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -31,8 +35,6 @@ class ViewController: NSViewController {
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         camera.layer?.addSublayer(previewLayer)
-        
-        
     }
     
     override func viewDidAppear() {
@@ -44,4 +46,11 @@ class ViewController: NSViewController {
         captureSession.stopRunning()
     }
     
+    func dialogOKCancel(question: String, text: String) {
+        let alert = NSAlert()
+        alert.messageText = question
+        alert.informativeText = text
+        alert.alertStyle = .critical
+        alert.addButton(withTitle: "OK")
+    }
 }
