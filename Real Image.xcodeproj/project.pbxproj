@@ -57,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				D2BDBE5225569F9D008C4CEF /* Delegates */,
-				D2BDBE5425569FA6008C4CEF /* Conrollers */,
+				D2BDBE5425569FA6008C4CEF /* Controllers */,
 				D2497EDB24F9D0630014802A /* Assets.xcassets */,
 				D2BDBE5625569FAB008C4CEF /* Storyboards */,
 				D2497EE024F9D0630014802A /* Info.plist */,
@@ -74,12 +74,12 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		D2BDBE5425569FA6008C4CEF /* Conrollers */ = {
+		D2BDBE5425569FA6008C4CEF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				D2497ED924F9D0610014802A /* ViewController.swift */,
 			);
-			path = Conrollers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		D2BDBE5625569FAB008C4CEF /* Storyboards */ = {

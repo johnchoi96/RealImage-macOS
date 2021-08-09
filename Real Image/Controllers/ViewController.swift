@@ -34,12 +34,7 @@ class ViewController: NSViewController {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = camera.bounds
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        
-//        if ((previewLayer.connection?.isVideoMirroringSupported) != nil) {
-//            previewLayer.connection?.automaticallyAdjustsVideoMirroring = false
-//            previewLayer.connection?.isVideoMirrored = true
-//        }
-        
+
         camera.layer?.addSublayer(previewLayer)
     }
     
